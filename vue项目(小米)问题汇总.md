@@ -14,6 +14,8 @@
   -  [监听路由变化](#监听路由变化)    
   -  [回调的使用](#回调的使用)
 - [语法](#语法)
+- [逻辑思路](#思路)
+
 
 ****
 
@@ -118,7 +120,8 @@ module.exports = {
 
   proxy:{
   '/api': {
-  target: 'http://localhost:3336/api/',//3336为服务器端口,前面是本机ip地址
+  target: 'http://localhost:3336/api/',
+  //3336为服务器端口,前面是本机ip地址,每次改了端口都要记得重启vue
   changeOrigin: true,
   pathRewrite: {
   '^/api': ''
@@ -172,11 +175,11 @@ module.exports = {
 
   const userApi = require('./userApi');
 
-  const fs = require('fs');
+  const fs = require('fs');//文件管理系统
 
-  const path = require('path');
+  const path = require('path');//path 模块提供用于处理文件路径和目录路径的实用工具。
 
-  const bodyParser = require('body-parser');
+  const bodyParser = require('body-parser');//处理程序之前，在中间件中对传入的请求体进行解析
 
   const express = require('express');
 
@@ -186,7 +189,7 @@ module.exports = {
 
   app.use(bodyParser.urlencoded({extended: false}));
 
-  const {PORT} =require('./config.json');
+  const {PORT} =require('./config.json');//获取配置文件
 
   app.use(express.static('./'));
   // 后端api路由
@@ -468,6 +471,8 @@ dropToCart(){
   }
 ```
 
+
+
 # 语法
 
 * :style
@@ -482,7 +487,22 @@ dropToCart(){
 ```  
 
 
+# 思路
 
+## 商品-->详情(遮罩)
+  * 需求
+    > 在列表页点击点击商品,显示相应的详情内容
+  * 思路
+    > 可以使用传一个当前项的对象过去(使用公共仓库),然后在详情页使用computed把相应内容渲染出来
+
+## 商品数量的增/减
+  * 需求
+    > - 实现用户对每项商品的增减需求
+    > - 实现总价的实时显示
+    > - 把商品数据传入到数据库
+  * 思路
+    > - 
+    
 
 
 
