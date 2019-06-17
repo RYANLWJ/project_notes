@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num = 0;
+     function test(){
+        var num = 5;
+        return function(){
+            num++;
+            console.log(num);
+        }
+    }
+
+    var val = test();
+    val();
+    val();
+    val();
+    val();
+    val();
+    var p = new Promise(function(resolve){
+
+setTimeout(resolve, 3000);
+
+});
+p.then(()=>console.log('show'))
+
+var arr = [ 1,2,3 ]
+   arr.shift();// ->[2,3]
+   arr.push();//->[2,3]
+   arr.unshift();
+   console.log(arr.concat([1,2]));
+    </script>
+</body>
+</html>

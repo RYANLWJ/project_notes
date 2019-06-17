@@ -13,6 +13,8 @@
   -  [获取从列表页传过来的路由id](#获取从列表页传过来的路由id)    
   -  [监听路由变化](#监听路由变化)    
   -  [回调的使用](#回调的使用)
+  - [编程式跳转](#编程式跳转)
+  -  [Cookie](#Cookie)
 - [语法](#语法)
 - [逻辑思路](#思路)
 
@@ -471,6 +473,69 @@ dropToCart(){
   }
 ```
 
+## 编程式跳转
+
+```
+  this.$router.push({
+          path:'/signin'
+        })
+```
+## Cookie
+* 方法:
+  1. 使用js-cookie
+   
+```
+  npm i js-cookie
+```
+```
+  import Cookies from 'js-cookie'
+```
+```
+Cookies.get('name'); // => 'value'
+Cookies.get('nothing'); // => undefined
+Read all visible cookies:
+
+Cookies.get(); // => { name: 'value' }
+Delete cookie:
+
+Cookies.remove('name');
+Delete a cookie valid to the path of the current page:
+
+Cookies.set('name', 'value', { path: '' });
+Cookies.remove('name'); // fail!
+Cookies.remove('name', { path: '' }); // removed!
+IMPORTANT! when deleting a cookie, you must pass the exact same path and domain attributes that was used to set the cookie, unless you're relying on the default attributes.
+
+Note: Removing unexisting cookie does not raise any exception nor return any value
+```
+
+2. 直接在Vue里写js操作
+   
+```
+set: function (name, value, days) {
+
+    var d = new Date;
+
+    d.setTime(d.getTime() + 24*60*60*1000*days);
+
+    window.document.cookie = name + "=" + value + ";path=/;expires=" + d.toGMTString();
+
+},
+
+get: function (name) {
+
+    var v = window.document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+
+    return v ? v[2] : null;
+
+},
+
+delete: function (name) {
+
+    this.set(name, '', -1);
+
+}
+```
 
 
 # 语法
@@ -486,8 +551,28 @@ dropToCart(){
   :class="{'active':idx==num}"
 ```  
 
+* 判断对象是否为空
 
-# 思路
+```
+ if(Object.keys(obj)==0){
+    return true
+    }else{
+      return false
+    }
+```
+* 判断数组是否为空
+
+```
+  if(array.length==0){
+return true
+    }else{
+      return false
+    }
+  
+```
+
+# 业务逻辑
+  ## 注册页
 
 ## 商品-->详情(遮罩)
   * 需求
