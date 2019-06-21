@@ -1,11 +1,14 @@
-# 请求短信验证码 API 配置(Node)
+# 请求短信验证码 API 配置 (Node)
 
-## 配置demo:
-###  需要引进的依赖:
-1. **request** 
+## 配置 demo:
+
+### 需要引进的依赖：
+
+1. **request**
 2. **querystring**
 
 #### main.ts
+
 ```
     const request = require('request'); // 发送短信 验证码用到的module
     const querystring = require('querystring'); //  发送短信验证码用到的module
@@ -13,9 +16,10 @@
     /*把request和querystring挂到Vue,供其他模块使用*/
     Vue.prototype.$request = request;
     Vue.prototype.$querystring = querystring;
-```  
+```
 
 #### signIn.vue
+
 ```
 /*未设置变量*/
   methods: {
@@ -36,8 +40,8 @@
           console.log('请求异常');
           console.log(error)
       	}
-       }) 
-  
+       })
+
     }
   },
 ```
