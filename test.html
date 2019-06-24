@@ -8,30 +8,36 @@
 </head>
 <body>
     <script>
-   {
-       //块内
-       var a = 1;
-       let b = 2;
-       const c =3;
+        var data = [
+            {
+                name:'aa',
+                age:22
+            },
+            {
+                name:'bb',
+                age:22
+            },
+            {
+                name:'cc',
+                age:22
+            },
+                
         
-       (()=>{
-           console.log(a)//1
-           console.log(b)//2
-           console.log(c)//3
+        ]
+          function randomSort1(arr){
+                    for (let i = 0, l = arr.length; i < l; i++) {
+                        let rc = parseInt(Math.random() * l );
+                // 让当前循环的数组元素和随机出来的数组元素交换位置
+                        const empty = arr[i];
+                        arr[i] = arr[rc];
+                        arr[rc] = empty;       
+                     }
+                     return arr;
+                }
 
-         a=10;
-         b=20;
-         c=30;//error:Assignment to constant variable.
-         
-       })()
-   console.log(a)//10
-   console.log(b)//20
-   console.log(c) //3
-   }
-   //块外
-   console.log(a)//10
-   console.log(b)//is not defined
-   console.log(c) //is not defined
+                 data = randomSort1(data)   
+                console.log(data)
+
     </script>
 </body>
 </html>

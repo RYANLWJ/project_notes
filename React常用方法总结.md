@@ -267,3 +267,23 @@ export default class Home extends Component {
     }
 }
 ```
+
+## 搜索关键字渲染相应内容
+
+> 解决方案：filter(),map()
+
+```
+filterNews(arr, searchInputText) {
+        return arr.filter((item) => {
+            if (item.title.indexOf(searchInputText) > -1) {
+                return item
+            }
+        }).map((item, index) => {
+            return (//要渲染的内容)
+        })
+
+render(){
+    return <div
+            {this.filterNews(this.state.news, this.props.searchInputText)}
+            </div>
+```
