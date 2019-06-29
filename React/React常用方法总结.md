@@ -287,3 +287,81 @@ render(){
             {this.filterNews(this.state.news, this.props.searchInputText)}
             </div>
 ```
+
+## 获取滚动条到底部的高度
+
+```
+componentDidMount(){
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll(){
+    console.log(window.scrollY)
+  }
+
+```
+
+## 轮播图 Swiper 插件
+
+> 依赖：swiper
+
+```
+import Swiper from 'swiper/dist/js/swiper.js';
+
+componentDidMount () {
+
+        const mySwiper = new Swiper('.swiper-container', {
+          autoplay: true,
+          auto:5000,
+          loop: true,
+          pagination : {
+              el: '.slidesjs-pagination-item',//焦点类名
+              clickable: true,
+
+          }
+        });
+  }
+//结构demo
+   <div className="swiper-container sroll-banner swiper-container-horizontal swiper-container-autoheight">
+            <div className="swiper-wrapper"
+            >
+                <div className="swiper-slide swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev"
+                    data-swiper-slide-index="0" ><img
+                        src="http://images.cmbchina.com/cmbadv/201906/3d8bdd98-5438-41c5-9397-8bf3a342ae12.jpg"
+                        width="100%" height="100%" alt="" keys="0" className="J_ScrollImgs"
+                     />
+
+                        </div>
+                <div className="swiper-slide swiper-slide-duplicate-active swiper-slide-prev swiper-slide-duplicate-next"
+                    data-swiper-slide-index="0" ><img
+                        src="http://images.cmbchina.com/cmbadv/201906/3d8bdd98-5438-41c5-9397-8bf3a342ae12.jpg"
+                        width="100%" height="100%" alt="" keys="0" className="J_ScrollImgs"
+                       />
+
+                        </div>
+                <div className="swiper-slide swiper-slide-duplicate swiper-slide-active swiper-slide-duplicate-prev"
+                    data-swiper-slide-index="0" ><img
+                        src="http://images.cmbchina.com/cmbadv/201906/3d8bdd98-5438-41c5-9397-8bf3a342ae12.jpg"
+                        width="100%" height="100%" alt="" keys="0" className="J_ScrollImgs"
+                      />
+
+                        </div>
+            </div>
+            <ul className="slidesjs-pagination swiper-pagination-custom">
+                <li className="slidesjs-pagination-item"><a className="active"></a></li>
+            </ul>
+        </div>
+```
+## 路由的跳转
+
+```
+//前往某一页
+   toExDetail(index){
+        this.props.history.push('/exdetail/'+index)
+    };
+//返回上一页
+    goBack(){
+        window.history.back()
+    }
+```
+
