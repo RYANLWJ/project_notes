@@ -1,24 +1,28 @@
-# Vue结合express连接mongodb
-## 目录   
-- [在项目根目录创建一个server文件夹](#在项目根目录创建一个server文件夹)             
-   - [app.js](#appjs)        
-   - [db.js](#dbjs)        
-   - [user.js](#userjs)        
-   - [api.js](#apijs)    
+# Vue 结合 express 连接 mongodb
+
+## 目录
+
+- [在项目根目录创建一个server文件夹](#在项目根目录创建一个server文件夹)
+   - [app.js](#appjs)
+   - [db.js](#dbjs)
+   - [user.js](#userjs)
+   - [api.js](#apijs)
 - [Vue](#vue)
 - [Mongodb在终端常用指令](#Mongodb在终端常用指令)
 ****
 
-## 在项目根目录创建一个server文件夹
+## 在项目根目录创建一个 server 文件夹
 
-### 里面包含:
-1. api.js 创建后端接口 (一些查询语句也可以写在里面)
-2. app.js 创建express服务器
-3. db.js 连接mongodb数据库
-4. user.js 配置Schema模型,用来连接表和操作表
+### 里面包含：
+
+1. api.js 创建后端接口 （一些查询语句也可以写在里面）
+2. app.js 创建 express 服务器
+3. db.js 连接 mongodb 数据库
+4. user.js 配置 Schema 模型，用来连接表和操作表
 
 ### app.js
-```
+
+```js
 // 引入express模块
 const express = require('express');
 
@@ -36,7 +40,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // 使用
 app.use('/api', query);
 
-// 定义服务器启动端口 
+// 定义服务器启动端口
 app.listen(3009, () => {
   console.log('app listening on port 3009');
 });
@@ -44,7 +48,7 @@ app.listen(3009, () => {
 
 ### db.js
 
-```
+```js
 var mongoose = require('mongoose');
 var DB_URL = 'mongodb://localhost:27017/taobaodb';//后缀是数据库的名字
 
@@ -72,7 +76,8 @@ module.exports = mongoose;
 ```
 
 ### user.js
-```
+
+```js
 /*
 *定义一个user的Schema
 */
@@ -81,7 +86,7 @@ const Schema = mongoose.Schema;
 
 /*创建一个模型
 *定义一些数据
-*/ 
+*/
 
 const UserSchema = new Schema({
   name: { type: String }, // 属性name，类型为String
@@ -97,8 +102,8 @@ const User = module.exports = mongoose.model('taobaodb', UserSchema,'taobaodb');
 
 ### api.js
 
-```
-// 引入express 模块 
+```js
+// 引入express 模块
 const express = require('express');
 
 const router = express.Router();
@@ -122,7 +127,7 @@ router.post('/add', (req, res) => {
   });
 });
 
-// 查询数据 
+// 查询数据
 router.post('/query', (req, res) => {
   const name = req.body.name,
     age = req.body.age,
@@ -159,9 +164,9 @@ var user = new User({
         name:'cherry',
         age:33
     }]
-   
+
   });
-  
+
   user.save(function(err, res) {
     if (err) {
       console.log(err);
@@ -219,7 +224,8 @@ module.exports = router;
 ## Vue
 
 #### TEST demo
-```
+
+```js
     <a class="btn buy-btn" @click="addData()" >加入购物车</a>
 .
 ..
@@ -257,14 +263,18 @@ addData(){
     }
 ```
 
-## Mongodb在终端常用指令
-1. 开启 
-    * 找到mongodb这个文件夹然后在bin打开终端,输入
+## Mongodb 在终端常用指令
+
+1. 开启
+    * 找到 mongodb 这个文件夹然后在 bin 打开终端，输入
+
 ```
   $ sudo ./mongod
 ```
-2. 正常关闭 
-   * 在bin文件夹里点开mongo这个终端窗口,输入
+
+2. 正常关闭
+   * 在 bin 文件夹里点开 mongo 这个终端窗口，输入
+
 ```
   > use admin;
   switched to db admin

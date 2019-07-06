@@ -4,7 +4,7 @@
 
 ### conn.php
 
-```
+```php
     <?php
     header('content-type:text/html;charset=utf-8');
 
@@ -24,7 +24,7 @@
 
 ## 把多条数据变成数组
 
-```
+```php
 $datalist = array( //把前面拿的数据整理成数组
     'data' => $content,//list列表的数据
     'orderdata' => $content3,//此用户加入购物车的所有商品数据
@@ -37,7 +37,7 @@ echo json_encode($datalist, JSON_UNESCAPED_UNICODE);
 
 ## 加入购物车简单逻辑
 
-```
+```php
 <?php
 header('content-type:text/html;charset=utf-8');//设置编码
 

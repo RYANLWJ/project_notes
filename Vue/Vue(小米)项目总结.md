@@ -24,7 +24,7 @@
 ### 异步
 1. 如果遇到拿到的数据有多层嵌套的(如数组中套对象)数据,要进行二次循环的时候,可能需要解决异步导致拿不到相应数据的问题.
 
-```
+```html
   <img
       v-if="list2.category_list[0].body.items"
       style="height: 2rem; width: 5rem;"
@@ -36,7 +36,7 @@
 
 2. setTimeout
    
-```
+```js
   mounted() {
       setTimeout(() => {
            this.initPage()
@@ -49,7 +49,7 @@
 
 1. #### 配置跨域可能会导致的问题
 
-```
+```js
 module.exports = {
   /** 区分打包环境与开发环境
   * process.env.NODE_ENV==='production'  (打包环境)
@@ -144,7 +144,7 @@ module.exports = {
 
 ### db.js
 
-```
+```js
 const express = require('express');
 const mysql = require('mysql');
 const app = express();
@@ -172,7 +172,7 @@ module.exports = {
 
 ### index.js
 
-```
+```js
 // node 后端服务器
 
   const userApi = require('./userApi');
@@ -211,7 +211,7 @@ module.exports = {
 
 ### userApi.js(用户接口,sqlMap里面的语句)
 
-```
+```js
   var models = require('./db.js');
 
   var express = require('express');
@@ -311,7 +311,7 @@ module.exports = router;
 
 ### sqlMap.js
 
-```
+```js
 // sql语句
 var sqlMap = {
 // 用户
@@ -349,7 +349,7 @@ module.exports = sqlMap;
 
 ### main.js
 
-```
+```js
   import VueResource from 'vue-resource';
   import VueRouter from 'vue-router';
   Vue.use(VueResource)
@@ -360,14 +360,14 @@ module.exports = sqlMap;
 
 ## 返回上一页
 
-```
+```js
   back(){
   this.$router.go(-1);//返回上一层
   }
 ```
 ## router.js (列表切详情的配置)
 
-```
+```js
   {
     path: '/detail/:id',
     name: 'detail',
@@ -377,7 +377,7 @@ module.exports = sqlMap;
 ```
 ## 把商品id传到详情页
 
-```
+```js
   goToDetail(id){
   this.$router.push({
   path:'detail/'+id
@@ -386,7 +386,7 @@ module.exports = sqlMap;
 ```
 ## 获取从列表页传过来的路由id
 
-```
+```js
   getOrderId(){
   this.id=this.$route.params && this.$route.params.id
   console.log(this.id)
@@ -395,7 +395,7 @@ module.exports = sqlMap;
 ``` 
 ## 监听路由变化
 
-```
+```js
   mounted() {
   this.getUrlName();
   // console.log(this.$route.params )
@@ -420,7 +420,7 @@ module.exports = sqlMap;
 
 * 应用在详情页,查询当前用户所看的当前商品是否已在此用户的订单中,如果没有则插入,有则更新.
   
-```
+```js
 checkCurrItem(res){
     var name = 'RYAN';
   var goods_id = this.id;
@@ -441,7 +441,7 @@ checkCurrItem(res){
         }
 ```
 
-```
+```js
 dropToCart(){
       this.checkCurrItem(res=>{
         // console.log(res,err)
@@ -475,7 +475,7 @@ dropToCart(){
 
 ## 编程式跳转
 
-```
+```js
   this.$router.push({
           path:'/signin'
         })
@@ -487,10 +487,10 @@ dropToCart(){
 ```
   npm i js-cookie
 ```
-```
+```js
   import Cookies from 'js-cookie'
 ```
-```
+```js
 Cookies.get('name'); // => 'value'
 Cookies.get('nothing'); // => undefined
 Read all visible cookies:
@@ -511,7 +511,7 @@ Note: Removing unexisting cookie does not raise any exception nor return any val
 
 2. 直接在Vue里写js操作
    
-```
+```js
 set: function (name, value, days) {
 
     var d = new Date;
@@ -542,18 +542,18 @@ delete: function (name) {
 
 * :style
 
-```
+```js
   :style="{'transform':(num!=0&&12<=num)?'translateY(-10.8rem)':''}"
 ```
 * :class
 
-```
+```js
   :class="{'active':idx==num}"
 ```  
 
 * 判断对象是否为空
 
-```
+```js
  if(Object.keys(obj)==0){
     return true
     }else{
@@ -562,7 +562,7 @@ delete: function (name) {
 ```
 * 判断数组是否为空
 
-```
+```js
   if(array.length==0){
 return true
     }else{

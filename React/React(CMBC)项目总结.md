@@ -9,7 +9,7 @@
 
 ### 轮播图 （使用 swiper 插件实现）
 
-```
+```js
 import Swiper from 'swiper/dist/js/swiper.js';
 
 componentDidMount () {
@@ -59,7 +59,7 @@ componentDidMount () {
 
 ### 选项卡
 
-```
+```js
    handleTab1(idx){
 
             this.setState({
@@ -83,7 +83,7 @@ componentDidMount () {
 
 * 请求数据
 
-```
+```js
     async getContent(){
         const res = await axios.get('/getfxrate')
     }

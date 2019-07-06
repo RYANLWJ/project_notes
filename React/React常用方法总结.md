@@ -6,7 +6,7 @@
 
 1. 用 react.js 实现类似 vue.js 的 v-if / v-for 的指令
 
-```
+```js
     const tag = <div>real content </div>;
     const tag2 = <p>false content</p>;
     const data = {
@@ -28,7 +28,7 @@
 
 2. `toggle` 功能
 
-```
+```js
     import React from 'react';//引进react
 
     class Header extends React.Component {   //构建组件
@@ -60,7 +60,7 @@ export default Header; //暴露Header组件
 
 3. 主件 render()
 
-```
+```js
     ReactDOM.render(<Content/>, document.getElementById('root'));
 ```
 
@@ -68,7 +68,7 @@ export default Header; //暴露Header组件
 * 子拿父的内容通过 props, 父拿子的内容通过回调。
 * Father.js
 
-```
+```js
 import React from 'react';
 import SubBtn from './children'
 export default class bigBtn extends React.Component {
@@ -124,7 +124,7 @@ export default class bigBtn extends React.Component {
 
 * Children.js
 
-```
+```js
 import React from 'react';
 
 export default class subBtn extends React.Component {
@@ -173,26 +173,26 @@ export default class subBtn extends React.Component {
 
     1.  暴露一个类组件
 
-        ```
+        ```js
         import React from 'react';
         export default class bigBtn extends React.Component
         ```
 
     2. 在标签内写样式 style
 
-        ```
+        ```html
         <div style={{width: '200px',height: '50px',}}></div>
         ```
 
     3. 在标签内写事件
 
-        ```
+        ```html
         <div onClick={this.showTrigger.bind(this)}></div> //注意this指向
         ```
 
     4.
 
-        ```
+        ```js
         class A {}
         class B extends A {
         constructor() {
@@ -211,7 +211,7 @@ export default class subBtn extends React.Component {
 
 * **index.js** demo
 
-```
+```js
 /* 引进分页面自定义模块  */
 import Home from './pages/Home';
 import Details from './pages/Details';
@@ -235,7 +235,7 @@ ReactDOM.render(
 
 * **Home.js** demo
 
-```
+```js
 import React, { Component } from 'react'
 import Search from '../components/Search';
 import Panel from '../components/Panel';
@@ -272,7 +272,7 @@ export default class Home extends Component {
 
 > 解决方案：filter(),map()
 
-```
+```js
 filterNews(arr, searchInputText) {
         return arr.filter((item) => {
             if (item.title.indexOf(searchInputText) > -1) {
@@ -290,7 +290,7 @@ render(){
 
 ## 获取滚动条到底部的高度
 
-```
+```js
 componentDidMount(){
     window.addEventListener('scroll', this.handleScroll);
   }
@@ -305,7 +305,7 @@ componentDidMount(){
 
 > 依赖：swiper
 
-```
+```js
 import Swiper from 'swiper/dist/js/swiper.js';
 
 componentDidMount () {
@@ -354,7 +354,7 @@ componentDidMount () {
 ```
 ## 路由的跳转
 
-```
+```js
 //前往某一页
    toExDetail(index){
         this.props.history.push('/exdetail/'+index)

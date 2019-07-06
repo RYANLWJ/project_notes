@@ -9,7 +9,7 @@
 
 #### main.ts
 
-```
+```js
     const request = require('request'); // 发送短信 验证码用到的module
     const querystring = require('querystring'); //  发送短信验证码用到的module
 
@@ -20,7 +20,7 @@
 
 #### signIn.vue
 
-```
+```js
 /*未设置变量*/
   methods: {
     getMsgCode(){
